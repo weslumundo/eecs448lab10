@@ -1,0 +1,17 @@
+body{
+	background-color: cyan;
+}
+
+div{
+	margin-left:40%;
+	margin-top: 15%;
+}
+
+#butt{
+	margin-left: 40%;
+	margin-top: 1%;
+}
+
+p{
+	text-align:center;
+}
