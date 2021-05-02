@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="ViewUserPosts.css">
+	</head>
+	<body>
+		<form action="ViewUserPosts.php" method="post">
+			<div>
+				<select name="user">
+						<?php
+							$mysqli = new mysqli("mysql.eecs.ku.edu", "wesleysportsman", "Ree7Fa9s", "wesleysportsman");
+							// check connection
+							if ($mysqli->connect_errno) {
+								printf("Connect failed: %s\n", $mysqli->connect_error);
+								exit();
+							}
+							else{
+								$query = "SELECT *
+								FROM Users";
+								//code for grabbing users
+								if ($result = $mysqli->query($query)) {
+									/* fetch associative array */
+									while ($row = $result->fetch_assoc()) {
+										//echo "<p>Test</p>";
+										$temp = $row["user_id"];
+										echo "<option value=$temp>$temp</option>";
+									}
+									//free results
+									$result->free();
+								}	
+								else{
+									printf("Something went wrong: %s\n", $mysqli->error);
+								}
+								//close connection
+								
+								$mysqli->close();
+							}
+						?>
+						</select>
+				</select>
+			</div>
+			<input id="butt" type="submit">
+		</form>
+	</body>
+</html>
