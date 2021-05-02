@@ -1,0 +1,31 @@
+body{
+	background-color: cyan;
+}
+
+div{
+	margin-top: 15%;
+	text-align:center;
+}
+
+#butt{
+	margin-left: 40%;
+	margin-top: 1%;
+}
+
+table{
+	margin-left:45%;
+}
+
+p{
+	text-align:center;
+}
+
+#post{
+	margin-top:2%;
+	width: 30%;
+	height: 20%;
+}
+
+a{
+	text-align:center
+}
