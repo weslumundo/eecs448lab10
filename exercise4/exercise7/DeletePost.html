@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="DeletePost.css">
+	</head>
+	<body>
+		<form action="DeletePost.php" method="post">
+			<div>
+				<fieldset>
+					<?php
+						echo "<table>";
+							$mysqli = new mysqli("mysql.eecs.ku.edu", "wesleysportsman", "Ree7Fa9s", "wesleysportsman");
+							// check connection
+							if ($mysqli->connect_errno) {
+								printf("Connect failed: %s\n", $mysqli->connect_error);
+								exit();
+							}
+							else{
+								//echo"<p>test</p>";
+								$query = "SELECT *
+								FROM Posts
+								ORDER BY post_id";
+								//code for grabbing posts
+								if ($result = $mysqli->query($query)) {
+									//fetch associative array
+									echo"<tr><td>User</td><td>Post</td><td>Delete?</td></tr>";
+									while ($row = $result->fetch_assoc()) {
+											$temp1 = $row["content"];
+											$temp2 = $row["author_id"];
+											echo "<tr><td>$temp2</td><td>$temp1</td>".'<td><input type="checkbox" name="posts[]" value='.$row["post_id"].">Delete?</td></tr>";
+									}
+									//free results
+									$result->free();
+								}	
+								else{
+									printf("Something went wrong: %s\n", $mysqli->error);
+								}
+								//close connection
+								
+								$mysqli->close();
+							}
+						echo "</table>";
+					?>
+				</fieldset>
+			</div>
+			<input id="butt" type="submit">
+		</form>
+	</body>
+</html>
